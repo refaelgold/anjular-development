@@ -1,0 +1,26 @@
+.underline {
+  text-decoration: underline !important; }
+
+.blackbg {
+  background: #000000 !important; }
+
+.white {
+  color: #fff !important; }
+
+#CartController .red {
+  color: red; }
+
+#AlbumController tr {
+  border: 1px solid #000; }
+#AlbumController td {
+  border: 1px solid #000; }
+
+#DeathrayMenuController .menu-disabled-true {
+  color: gray; }
+#DeathrayMenuController .title {
+  color: white;
+  padding: 10px 0px; }
+#DeathrayMenuController .error {
+  color: red; }
+#DeathrayMenuController .warning {
+  color: yellow; }

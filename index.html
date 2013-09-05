@@ -128,5 +128,25 @@
 
 
 
+        <hr>
+        <hr>
+        <hr>
+
+            <table ng-controller='RestaurantTableController' id="RestaurantTableController">
+                <tr ng-repeat='restaurant in directory' ng-click='selectRestaurant($index)'
+                    ng-class='{selected: $index==selectedRow}'>
+                    <td>{{restaurant.name}}</td>
+                    <td>{{restaurant.cuisine}}</td>
+                </tr>
+            </table>
+
+
+        <hr>
+        <hr>
+        <hr>
+
+
+
+
 </body>
 </html>

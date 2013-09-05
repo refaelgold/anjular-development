@@ -24,3 +24,7 @@
   color: red; }
 #DeathrayMenuController .warning {
   color: yellow; }
+
+#RestaurantTableController .selected {
+  color: red;
+  font-weight: bold; }

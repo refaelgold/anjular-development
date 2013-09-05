@@ -158,6 +158,21 @@ myAppModule.controller('HeaderController', function HeaderController($scope) {
     }
 );
 
+
+myAppModule.controller('RestaurantTableController', function RestaurantTableController($scope) {
+        $scope.directory = [{name:'The Handsome Heifer', cuisine:'BBQ'},
+            {name:'green green green', cuisine:'Salads'},
+            {name:'House of Fine Fish', cuisine:'Seafood'}];
+        $scope.selectRestaurant = function(row) {
+            $scope.selectedRow = row;
+        };
+
+    }
+);
+
+
+
+
 //
 //    config(['$routeProvider', function($routeProvider) {
 //        $routeProvider.

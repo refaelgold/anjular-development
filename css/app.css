@@ -28,3 +28,7 @@
 #RestaurantTableController .selected {
   color: red;
   font-weight: bold; }
+#RestaurantTableController tr {
+  border: 1px solid #000; }
+#RestaurantTableController td {
+  border: 1px solid #000; }

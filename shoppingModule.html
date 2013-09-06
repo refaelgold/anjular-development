@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="ShoppingModule">
+<head>
+    <meta charset="utf-8">
+    <title>ShoppingModule Anjular</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+
+
+    <script src="js/app.js"></script>
+
+    <!--&lt;!&ndash;filter with false and true if the boolean component is on&ndash;&gt;-->
+    <!--<script src="js/filters.js"></script>-->
+    <!--<script src="js/services.js"></script>-->
+</head>
+<body>
+    <div ng-controller="ShoppingController" id="ShoppingController">
+
+
+        <h1>Shop!</h1>
+        <table>
+            <tr ng-repeat="item in items">
+            <td>{{item.title}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.price | currency}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+</body>
+</html>
+

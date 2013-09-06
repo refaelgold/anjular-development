@@ -19,28 +19,21 @@
 </head>
 <body>
     <div ng-controller="CartController" id="CartController">
-        <div class="row-fluid">
-            <div class="span2"></div>
-            <div class="span10">
-                <h1>Your order : </h1>
+
+
+
+            <div ng-repeat="item in items">
+                <span>{{item.title}}</span>
+                <input ng-model="item.quantity">
+                <span>{{item.price | currency}}</span>
+                <span>{{item.price * item.quantity | currency}}</span>
             </div>
-        </div>
+            <div>Total: {{totalCart() | currency}}</div>
+            <div>Discount: {{bill.discount | currency}}</div>
+            <div>Subtotal: {{subtotal() | currency}}</div>
 
 
 
-        <div ng-repeat='item in items'>
-            <div class="row-fluid">
-                <div class="span2 "></div>
-                <div class="span10">
-                    <span> <span class="red">item name: </span>{{item.title}}</span>
-                    <input ng-model='item.quantity'>
-                    <span><span class="red">price per unit : </span>{{item.price | currency}}</span>
-
-                    <span><span class="red">Total : </span>{{item.price * item.quantity | currency}}</span>
-                    <button ng-click="remove($index)">Remove</button>
-                </div>
-            </div>
-        </div>
 
 
     </div>
@@ -50,6 +43,8 @@
     <hr>
     <hr>
 
+
+    <h1>create the basic</h1>
     <div ng-controller="TextController" id="TextController">
         <!--an example of using data bind - only if its come from the server-->
         <h3 ng-bind="someText.message">{{someText.message}}</h3>
@@ -74,6 +69,10 @@
     <hr>
 
 
+
+    <h1>create a repeater with links</h1>
+
+
     <!--here we create a link with the id - better idea to make unique link-->
     <div ng-controller="StudentController" id="StudentController">
 
@@ -90,7 +89,7 @@
     <hr>
 
     <!--here we create a link with the id - better idea to make unique link-->
-
+<h1>create a repeater</h1>
     <div ng-controller="AlbumController" id="AlbumController">
         <h3 class="underline">table of track of lion king</h3>
         <table>
@@ -108,7 +107,7 @@
     <hr>
     <hr>
 
-
+<h1>css interduce and use ng-show </h1>
         <div ng-controller='DeathrayMenuController' id="DeathrayMenuController">
             <button ng-click='toggleMenu()'>Toggle Menu</button>
             <ul ng-show='show'>
@@ -119,7 +118,14 @@
         <div/>
 
 
+        <hr>
+        <hr>
+        <hr>
+        </div>
 
+
+
+    <h1>play with the class with boolean anwser</h1>
        <div ng-controller="HeaderController" id="HeaderController">
            <div ng-class="{error:isError,warning:isWarning}" class="blackbg title">{{messageText}}</div>
            <button ng-click="showError()">simulate Error</button>
@@ -133,20 +139,55 @@
         <hr>
 
             <table ng-controller='RestaurantTableController' id="RestaurantTableController">
-                <tr ng-repeat='restaurant in directory' ng-click='selectRestaurant($index)'
-                    ng-class='{selected: $index==selectedRow}'>
+
+                <!--if the condition is true - the class will be true(good for selected item)-->
+                <tr ng-repeat='restaurant in directory' ng-click='selectRestaurant($index)' ng-class='{selected: $index==selectedRow}'>
                     <td>{{restaurant.name}}</td>
                     <td>{{restaurant.cuisine}}</td>
                 </tr>
+                <a ng-href="http://www.ynet.co.il">link test</a>
+                <img ng-src="img/glyphicons-halflings-white.png" alt="glyphicons"/>
             </table>
 
 
+
+
+
+
         <hr>
         <hr>
         <hr>
+
+
+    <h1>Publishing Model data with scopes</h1>
+    <div ng-controller="CountController" id="CountController">
+        <button ng-click="setCount()">set count to 3</button>
+        <input ng-model="count"/>
+        <h3>{{count}}</h3>
+    </div>
+
+
+
+    <hr>
+    <hr>
+    <hr>
+
+
+
+    <h1>Customize Filter </h1>
+    <div ng-controller="FilterController" id="FilterController">
+
+        <h3>{{filterExample | titleCase}}</h3>
+    </div>
+
+
+
+
+
 
 
 
 
 </body>
 </html>
+

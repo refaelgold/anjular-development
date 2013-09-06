@@ -4,6 +4,26 @@
 
 var myAppModule = angular.module('OriellyAnjularStarter', []);
 
+
+
+
+//Filter Definition
+myAppModule.filter('titleCase', function() {
+    var titleCaseFilter = function(input) {
+            var words = input.split(' ');
+        for (var i = 0; i < words.length; i++) {
+            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        }
+        return words.join(' ');
+    };
+    return titleCaseFilter;
+});
+/*************************************************/
+
+
+
+
+//CONTROLLER DEFINITION
 myAppModule.controller('TextController',
     function($scope) {
         var someText = {};
@@ -15,19 +35,37 @@ myAppModule.controller('TextController',
 
 
 myAppModule.controller('CartController',function ($scope) {
+        $scope.bill = {};
         $scope.items = [
-            {title: 'pants', quantity:1, price: 50},
-            {title: 'shorts', quantity:1, price: 10},
-            {title: 'shoes', quantity: 1, price: 100}
+            {title: 'Paint pots', quantity: 8, price: 3.95},
+            {title: 'Polka dots', quantity: 17, price: 12.95},
+            {title: 'Pebbles', quantity: 5, price: 6.95}
         ];
-
-
-        $scope.remove = function(index) {
-            $scope.items.splice(index, 1);
+        $scope.totalCart = function() {
+            var total = 0;
+            for (var i = 0, len = $scope.items.length; i < len; i++) {
+                total = total + $scope.items[i].price * $scope.items[i].quantity;
+            }
+            return total;
         }
+        $scope.subtotal = function() {
+            return $scope.totalCart()-$scope.bill.discount;
+        };
+        function calculateDiscount(newValue, oldValue, scope) {
+            $scope.bill.discount = newValue > 100 ? 10 : 0;
+        }
+
+
+//        make two function together
+        $scope.$watch($scope.totalCart, calculateDiscount);
+
+
 
     }
 );
+
+
+
 
 
 myAppModule.controller('StudentController',function ($scope) {
@@ -172,6 +210,73 @@ myAppModule.controller('RestaurantTableController', function RestaurantTableCont
 
 
 
+myAppModule.controller('CountController', function CountController($scope) {
+        $scope.setCount=function(){
+            $scope.count=3;
+        }
+
+    }
+);
+
+
+myAppModule.controller('FilterController', function CountController($scope) {
+        $scope.filterExample="this is an example for filter with uppercase";
+    }
+);
+/*************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Create a module to support our shopping views
+var shoppingModule = angular.module('ShoppingModule', []);
+
+// Set up the service factory to create our Items interface to the
+// server-side database
+shoppingModule.factory('Items', function() {
+    var items = {};
+    items.query = function() {
+    // In real apps, we'd pull this data from the server...
+        return [
+            {title: 'Paint pots', description: 'Pots full of paint', price: 3.95},
+            {title: 'Polka dots', description: 'Dots with polka', price: 2.95},
+            {title: 'Pebbles', description: 'Just little rocks', price: 6.95}
+        ];
+    };
+    return items;
+});
+
+
+
+
+shoppingModule.controller('ShoppingController',
+    function($scope,$http) {
+
+        $http.get('/anjular-development/products/productList.json').success(function(data) {
+            $scope.items = data;
+            console.log(data);
+        });
+
+    });
 
 //
 //    config(['$routeProvider', function($routeProvider) {

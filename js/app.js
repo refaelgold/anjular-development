@@ -223,6 +223,39 @@ myAppModule.controller('FilterController', function CountController($scope) {
         $scope.filterExample="this is an example for filter with uppercase";
     }
 );
+
+
+myAppModule.controller('FocusController', function FocusController($scope) {
+
+            var message = {};
+            message.text = 'nothing is click yet';
+            $scope.message = message;
+
+
+        $scope.clickUnfocused=function(){
+
+            $scope.message.text="message Unfocused";
+        }
+        $scope.clickFocused=function(){
+
+            $scope.message.text="message Focused";
+        }
+    }
+);
+
+
+
+
+myAppModule.controller('AddUserController', function AddUserController($scope) {
+
+        $scope.message = '';
+        $scope.addUser = function () {
+        // TODO for the reader: actually save user to database...
+            $scope.message = 'Thanks, ' + $scope.user.first + ', we added you!';
+        };
+    }
+);
+
 /*************************************************/
 
 
